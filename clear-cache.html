@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Cache</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .success {
+            background: #10B981;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        button {
+            background: #4F46E5;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #4338CA;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clear Resume Builder Cache</h1>
+    <p>Click the button below to clear all cached data and start fresh.</p>
+    
+    <button onclick="clearCache()">Clear Cache Now</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        function clearCache() {
+            // Clear localStorage
+            localStorage.clear();
+            
+            // Clear sessionStorage
+            sessionStorage.clear();
+            
+            // Show success message
+            document.getElementById('result').innerHTML = `
+                <div class="success">
+                    <h2>✅ Cache Cleared Successfully!</h2>
+                    <p>All cached data has been removed.</p>
+                    <button onclick="window.location.href='builder.html'">Go to Resume Builder</button>
+                </div>
+            `;
+        }
+        
+        // Auto-clear on page load
+        window.addEventListener('load', () => {
+            console.log('Clearing all storage...');
+            localStorage.clear();
+            sessionStorage.clear();
+            console.log('Storage cleared!');
+        });
+    </script>
+</body>
+</html>

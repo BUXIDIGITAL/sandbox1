@@ -159,13 +159,18 @@ function removeExperience(id) {
 function updateExperienceData() {
     resumeData.experience = [];
     document.querySelectorAll('.experience-item').forEach(item => {
+        const getFieldValue = (selector) => {
+            const element = item.querySelector(selector);
+            return element ? element.value : '';
+        };
+        
         const exp = {
-            title: item.querySelector('.exp-title').value,
-            company: item.querySelector('.exp-company').value,
-            location: item.querySelector('.exp-location').value,
-            startDate: item.querySelector('.exp-start').value,
-            endDate: item.querySelector('.exp-end').value,
-            description: item.querySelector('.exp-description').value
+            title: getFieldValue('.exp-title'),
+            company: getFieldValue('.exp-company'),
+            location: getFieldValue('.exp-location'),
+            startDate: getFieldValue('.exp-start'),
+            endDate: getFieldValue('.exp-end'),
+            description: getFieldValue('.exp-description')
         };
         resumeData.experience.push(exp);
     });
@@ -223,13 +228,18 @@ function removeEducation(id) {
 function updateEducationData() {
     resumeData.education = [];
     document.querySelectorAll('.education-item').forEach(item => {
+        const getFieldValue = (selector) => {
+            const element = item.querySelector(selector);
+            return element ? element.value : '';
+        };
+        
         const edu = {
-            degree: item.querySelector('.edu-degree').value,
-            school: item.querySelector('.edu-school').value,
-            location: item.querySelector('.edu-location').value,
-            startDate: item.querySelector('.edu-start').value,
-            endDate: item.querySelector('.edu-end').value,
-            details: item.querySelector('.edu-details').value
+            degree: getFieldValue('.edu-degree'),
+            school: getFieldValue('.edu-school'),
+            location: getFieldValue('.edu-location'),
+            startDate: getFieldValue('.edu-start'),
+            endDate: getFieldValue('.edu-end'),
+            details: getFieldValue('.edu-details')
         };
         resumeData.education.push(edu);
     });
