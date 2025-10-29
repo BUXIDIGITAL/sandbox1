@@ -3,8 +3,9 @@
 .builder-container {
     display: grid;
     grid-template-columns: 450px 1fr;
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
     background: var(--bg-light);
+    position: relative;
 }
 
 /* Left Panel - Form */
@@ -931,13 +932,22 @@
 }
 
 /* Ensure footer doesn't interfere with builder */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 .builder-container {
+    flex: 1;
     margin-bottom: 0;
 }
 
-.builder-container ~ .footer {
+.footer {
+    margin-top: auto;
     position: relative;
-    margin-top: 0;
+    z-index: 1;
 }
 
 /* Print Styles */
