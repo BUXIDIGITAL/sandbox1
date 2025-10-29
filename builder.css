@@ -220,6 +220,26 @@ body.builder-page .footer {
     transform-origin: top center;
     transition: transform 0.3s;
     margin-bottom: 2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Ensure all text inside resume wraps properly */
+.resume-preview * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+/* Specific fixes for long text without spaces */
+.resume-preview .skill-tag,
+.resume-preview .resume-summary,
+.resume-preview .item-description,
+.resume-preview .resume-contact {
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 /* Modern Template */
