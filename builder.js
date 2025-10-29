@@ -206,11 +206,16 @@ function updatePreview() {
     
     let html = generateResumeHTML();
     preview.innerHTML = html;
+    
+    // Debug logging
+    console.log('Preview updated with data:', resumeData);
 }
 
 // Generate Resume HTML
 function generateResumeHTML() {
     const { fullName, jobTitle, email, phone, location, linkedin, website, summary, experience, education, skills, certifications } = resumeData;
+    
+    console.log('Generating HTML with:', { fullName, jobTitle, email, phone, location });
     
     let html = '<div class="resume-header">';
     html += `<div class="resume-name">${fullName || 'Your Name'}</div>`;
