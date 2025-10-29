@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Builder</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        input { display: block; margin: 10px 0; padding: 8px; width: 300px; }
+        #output { background: #f0f0f0; padding: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Resume Builder Test</h1>
+    
+    <div class="test-section">
+        <h2>Personal Information</h2>
+        <input type="text" id="fullName" placeholder="Full Name">
+        <input type="text" id="jobTitle" placeholder="Job Title">
+        <input type="email" id="email" placeholder="Email">
+        <input type="tel" id="phone" placeholder="Phone">
+    </div>
+    
+    <div id="output">
+        <h3>Output:</h3>
+        <div id="preview">Nothing entered yet...</div>
+    </div>
+    
+    <script>
+        const resumeData = {
+            fullName: '',
+            jobTitle: '',
+            email: '',
+            phone: ''
+        };
+        
+        function updatePreview() {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = `
+                <p><strong>Name:</strong> ${resumeData.fullName || 'Not entered'}</p>
+                <p><strong>Title:</strong> ${resumeData.jobTitle || 'Not entered'}</p>
+                <p><strong>Email:</strong> ${resumeData.email || 'Not entered'}</p>
+                <p><strong>Phone:</strong> ${resumeData.phone || 'Not entered'}</p>
+            `;
+            console.log('Resume Data:', resumeData);
+        }
+        
+        // Setup listeners
+        ['fullName', 'jobTitle', 'email', 'phone'].forEach(field => {
+            const element = document.getElementById(field);
+            if (element) {
+                element.addEventListener('input', (e) => {
+                    resumeData[field] = e.target.value;
+                    console.log(`Updated ${field}:`, e.target.value);
+                    updatePreview();
+                });
+            } else {
+                console.error(`Element not found: ${field}`);
+            }
+        });
+        
+        updatePreview();
+    </script>
+</body>
+</html>

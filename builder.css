@@ -930,12 +930,23 @@
     }
 }
 
+/* Ensure footer doesn't interfere with builder */
+.builder-container {
+    margin-bottom: 0;
+}
+
+.builder-container ~ .footer {
+    position: relative;
+    margin-top: 0;
+}
+
 /* Print Styles */
 @media print {
     .navbar,
     .builder-panel,
-    .preview-header {
-        display: none;
+    .preview-header,
+    .footer {
+        display: none !important;
     }
 
     .preview-panel {
