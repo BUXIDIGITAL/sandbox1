@@ -1,9 +1,30 @@
 /* Builder Page Specific Styles */
 
+/* Make builder page full height without footer interference */
+body.builder-page {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body.builder-page .navbar {
+    flex-shrink: 0;
+}
+
+body.builder-page .builder-container {
+    flex: 1;
+    overflow: hidden;
+}
+
+body.builder-page .footer {
+    display: none;
+}
+
 .builder-container {
     display: grid;
     grid-template-columns: 450px 1fr;
-    height: calc(100vh - 70px);
+    height: 100%;
     background: var(--bg-light);
     position: relative;
     overflow: hidden;
@@ -938,13 +959,8 @@
     }
 }
 
-/* Ensure footer appears below builder */
-body {
-    margin: 0;
-    overflow-x: hidden;
-}
-
-.footer {
+/* Footer hidden on builder page, shown on other pages */
+body:not(.builder-page) .footer {
     position: relative;
     z-index: 1;
     margin-top: 0;
