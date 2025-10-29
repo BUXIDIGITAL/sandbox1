@@ -23,11 +23,20 @@ let zoomLevel = 100;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    loadFromLocalStorage();
+    console.log('Builder.js loaded!');
     setupEventListeners();
-    addExperienceItem();
-    addEducationItem();
+    loadFromLocalStorage();
+    
+    // Only add default items if none exist
+    if (resumeData.experience.length === 0) {
+        addExperienceItem();
+    }
+    if (resumeData.education.length === 0) {
+        addEducationItem();
+    }
+    
     updatePreview();
+    console.log('Initialization complete');
 });
 
 // Setup Event Listeners
@@ -217,14 +226,19 @@ function updateEducationData() {
 
 // Update Preview
 function updatePreview() {
+    console.log('updatePreview called');
     const preview = document.getElementById('resumePreview');
+    if (!preview) {
+        console.error('Preview element not found!');
+        return;
+    }
+    
     preview.className = `resume-preview ${resumeData.template}-template`;
     
     let html = generateResumeHTML();
     preview.innerHTML = html;
     
-    // Debug logging
-    console.log('Preview updated with data:', resumeData);
+    console.log('Preview updated successfully');
 }
 
 // Generate Resume HTML
