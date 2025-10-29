@@ -39,16 +39,32 @@ function setupEventListeners() {
         updatePreview();
     });
 
-    // Personal info inputs
+    // Personal info inputs - use both 'input' and 'keyup' for better compatibility
     const personalFields = ['fullName', 'jobTitle', 'email', 'phone', 'location', 'linkedin', 'website', 'summary', 'skills', 'certifications'];
     personalFields.forEach(field => {
         const element = document.getElementById(field);
         if (element) {
+            // Use input event for real-time updates
             element.addEventListener('input', (e) => {
                 resumeData[field] = e.target.value;
+                updatePreview();
                 saveToLocalStorage();
+            });
+            
+            // Also listen to keyup as backup
+            element.addEventListener('keyup', (e) => {
+                resumeData[field] = e.target.value;
                 updatePreview();
             });
+            
+            // And change event for when field loses focus
+            element.addEventListener('change', (e) => {
+                resumeData[field] = e.target.value;
+                updatePreview();
+                saveToLocalStorage();
+            });
+        } else {
+            console.warn(`Element not found: ${field}`);
         }
     });
 
