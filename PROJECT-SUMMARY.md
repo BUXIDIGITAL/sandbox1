@@ -1,4 +1,4 @@
-# ResumeBuilder - Project Summary & Quick Reference
+# HostedResume.com - Project Summary & Quick Reference
 
 **Repository**: https://github.com/BUXIDIGITAL/sandbox1  
 **Powered By**: [BUXI DIGITAL](https://buxidigital.com)  
@@ -269,7 +269,7 @@ commit [earlier] - Initial MVP with resume builder
 ## 🔍 Quick File Reference
 
 **Need to update branding?**
-- Search for "ResumeBuilder" in all HTML files
+- Search for "HostedResume.com" in all HTML files
 - Update footer "Powered By BUXI DIGITAL" links
 
 **Need to change colors?**

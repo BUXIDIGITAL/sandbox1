@@ -47,7 +47,7 @@ vercel --prod
 ## Step 3: Add Your Branding (2 minutes)
 
 1. **Choose a name** for your resume builder
-2. **Find and replace** "ResumeBuilder" with your name in:
+2. **Find and replace** "HostedResume.com" with your name in:
    - `index.html`
    - `builder.html`
    - `README.md`

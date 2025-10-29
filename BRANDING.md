@@ -8,7 +8,7 @@ This guide will help you customize the Resume Builder with your own brand name a
 Examples: ResumeGenius, CVCraft, CareerBuilder, QuickResume, etc.
 
 ### Step 2: Find and Replace
-Search for "ResumeBuilder" and replace with your brand name in these files:
+Search for "HostedResume.com" and replace with your brand name in these files:
 - `index.html` (3 occurrences)
 - `builder.html` (1 occurrence)
 - `README.md` (multiple occurrences)
@@ -32,7 +32,7 @@ Change the 📄 emoji in the navigation to something else:
 ### Option 2: Add Image Logo
 Replace this in `index.html` and `builder.html`:
 ```html
-<h1>📄 ResumeBuilder</h1>
+<h1>📄 HostedResume.com</h1>
 ```
 
 With:
@@ -148,7 +148,7 @@ Add social media links:
 
 Before launching with your brand:
 
-- [ ] Replace "ResumeBuilder" with your brand name
+- [ ] Replace "HostedResume.com" with your brand name
 - [ ] Update domain references
 - [ ] Customize colors in `styles.css`
 - [ ] Add logo/favicon

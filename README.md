@@ -243,9 +243,9 @@ For questions or issues, please open an issue on GitHub.
 
 ## 🎨 Branding
 
-The site currently uses "ResumeBuilder" as a placeholder name. To customize with your own brand:
+The site currently uses "HostedResume.com" as a placeholder name. To customize with your own brand:
 
-1. **Search and replace** "ResumeBuilder" with your brand name in:
+1. **Search and replace** "HostedResume.com" with your brand name in:
    - `index.html`
    - `builder.html`
    - `README.md`
