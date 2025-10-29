@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .preview {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        h1 { color: #4F46E5; }
+    </style>
+</head>
+<body>
+    <h1>Simple Real-Time Test</h1>
+    <div class="container">
+        <div>
+            <h2>Input</h2>
+            <input type="text" id="testName" placeholder="Type your name">
+            <input type="text" id="testEmail" placeholder="Type your email">
+            <textarea id="testSummary" rows="4" placeholder="Type a summary"></textarea>
+        </div>
+        <div>
+            <h2>Preview</h2>
+            <div class="preview">
+                <h3 id="previewName">Your Name</h3>
+                <p id="previewEmail">your@email.com</p>
+                <p id="previewSummary">Your summary will appear here...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script loaded!');
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded!');
+            
+            const nameInput = document.getElementById('testName');
+            const emailInput = document.getElementById('testEmail');
+            const summaryInput = document.getElementById('testSummary');
+            
+            const namePreview = document.getElementById('previewName');
+            const emailPreview = document.getElementById('previewEmail');
+            const summaryPreview = document.getElementById('previewSummary');
+            
+            console.log('Elements found:', {
+                nameInput: !!nameInput,
+                emailInput: !!emailInput,
+                summaryInput: !!summaryInput
+            });
+            
+            nameInput.addEventListener('input', (e) => {
+                console.log('Name input:', e.target.value);
+                namePreview.textContent = e.target.value || 'Your Name';
+            });
+            
+            emailInput.addEventListener('input', (e) => {
+                console.log('Email input:', e.target.value);
+                emailPreview.textContent = e.target.value || 'your@email.com';
+            });
+            
+            summaryInput.addEventListener('input', (e) => {
+                console.log('Summary input:', e.target.value);
+                summaryPreview.textContent = e.target.value || 'Your summary will appear here...';
+            });
+            
+            console.log('Event listeners attached!');
+        });
+    </script>
+</body>
+</html>
