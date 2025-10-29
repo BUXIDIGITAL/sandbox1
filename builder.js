@@ -365,53 +365,76 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
     const saved = localStorage.getItem('resumeData');
     if (saved) {
-        resumeData = JSON.parse(saved);
-        
-        // Populate form fields
-        document.getElementById('templateSelect').value = resumeData.template || 'modern';
-        document.getElementById('fullName').value = resumeData.fullName || '';
-        document.getElementById('jobTitle').value = resumeData.jobTitle || '';
-        document.getElementById('email').value = resumeData.email || '';
-        document.getElementById('phone').value = resumeData.phone || '';
-        document.getElementById('location').value = resumeData.location || '';
-        document.getElementById('linkedin').value = resumeData.linkedin || '';
-        document.getElementById('website').value = resumeData.website || '';
-        document.getElementById('summary').value = resumeData.summary || '';
-        document.getElementById('skills').value = resumeData.skills || '';
-        document.getElementById('certifications').value = resumeData.certifications || '';
-        
-        // Restore experience items
-        if (resumeData.experience && resumeData.experience.length > 0) {
-            resumeData.experience.forEach((exp, index) => {
-                if (index > 0) addExperienceItem();
-                const items = document.querySelectorAll('.experience-item');
-                const item = items[index];
-                if (item) {
-                    item.querySelector('.exp-title').value = exp.title || '';
-                    item.querySelector('.exp-company').value = exp.company || '';
-                    item.querySelector('.exp-location').value = exp.location || '';
-                    item.querySelector('.exp-start').value = exp.startDate || '';
-                    item.querySelector('.exp-end').value = exp.endDate || '';
-                    item.querySelector('.exp-description').value = exp.description || '';
+        try {
+            resumeData = JSON.parse(saved);
+            
+            // Populate form fields safely
+            const setFieldValue = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.value = value || '';
+                } else {
+                    console.warn(`Element not found: ${id}`);
                 }
-            });
-        }
+            };
+            
+            setFieldValue('templateSelect', resumeData.template || 'modern');
+            setFieldValue('fullName', resumeData.fullName);
+            setFieldValue('jobTitle', resumeData.jobTitle);
+            setFieldValue('email', resumeData.email);
+            setFieldValue('phone', resumeData.phone);
+            setFieldValue('location', resumeData.location);
+            setFieldValue('linkedin', resumeData.linkedin);
+            setFieldValue('website', resumeData.website);
+            setFieldValue('summary', resumeData.summary);
+            setFieldValue('skills', resumeData.skills);
+            setFieldValue('certifications', resumeData.certifications);
         
-        // Restore education items
-        if (resumeData.education && resumeData.education.length > 0) {
-            resumeData.education.forEach((edu, index) => {
-                if (index > 0) addEducationItem();
-                const items = document.querySelectorAll('.education-item');
-                const item = items[index];
-                if (item) {
-                    item.querySelector('.edu-degree').value = edu.degree || '';
-                    item.querySelector('.edu-school').value = edu.school || '';
-                    item.querySelector('.edu-location').value = edu.location || '';
-                    item.querySelector('.edu-start').value = edu.startDate || '';
-                    item.querySelector('.edu-end').value = edu.endDate || '';
-                    item.querySelector('.edu-details').value = edu.details || '';
-                }
-            });
+            // Restore experience items
+            if (resumeData.experience && resumeData.experience.length > 0) {
+                resumeData.experience.forEach((exp, index) => {
+                    if (index > 0) addExperienceItem();
+                    const items = document.querySelectorAll('.experience-item');
+                    const item = items[index];
+                    if (item) {
+                        const setItemValue = (selector, value) => {
+                            const el = item.querySelector(selector);
+                            if (el) el.value = value || '';
+                        };
+                        setItemValue('.exp-title', exp.title);
+                        setItemValue('.exp-company', exp.company);
+                        setItemValue('.exp-location', exp.location);
+                        setItemValue('.exp-start', exp.startDate);
+                        setItemValue('.exp-end', exp.endDate);
+                        setItemValue('.exp-description', exp.description);
+                    }
+                });
+            }
+            
+            // Restore education items
+            if (resumeData.education && resumeData.education.length > 0) {
+                resumeData.education.forEach((edu, index) => {
+                    if (index > 0) addEducationItem();
+                    const items = document.querySelectorAll('.education-item');
+                    const item = items[index];
+                    if (item) {
+                        const setItemValue = (selector, value) => {
+                            const el = item.querySelector(selector);
+                            if (el) el.value = value || '';
+                        };
+                        setItemValue('.edu-degree', edu.degree);
+                        setItemValue('.edu-school', edu.school);
+                        setItemValue('.edu-location', edu.location);
+                        setItemValue('.edu-start', edu.startDate);
+                        setItemValue('.edu-end', edu.endDate);
+                        setItemValue('.edu-details', edu.details);
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error loading from localStorage:', error);
+            // Clear corrupted data
+            localStorage.removeItem('resumeData');
         }
     }
 }
