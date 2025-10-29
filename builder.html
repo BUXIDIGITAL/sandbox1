@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Create Your Professional Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="builder.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">📄 ResumeBuilder</a>
+            </div>
+            <div class="nav-links">
+                <button id="saveBtn" class="btn-secondary">💾 Auto-Saved</button>
+                <button id="downloadBtn" class="btn-primary">📥 Download PDF</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="builder-container">
+        <!-- Left Panel - Form -->
+        <div class="builder-panel">
+            <div class="panel-header">
+                <h2>Build Your Resume</h2>
+                <p>Fill in your information below</p>
+            </div>
+
+            <div class="form-section">
+                <h3>📋 Template</h3>
+                <select id="templateSelect" class="form-input">
+                    <option value="modern">Modern Professional</option>
+                    <option value="classic">Classic Executive</option>
+                    <option value="minimal">Minimal Elegant</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <h3>👤 Personal Information</h3>
+                <input type="text" id="fullName" class="form-input" placeholder="Full Name" required>
+                <input type="text" id="jobTitle" class="form-input" placeholder="Job Title / Professional Title">
+                <input type="email" id="email" class="form-input" placeholder="Email Address">
+                <input type="tel" id="phone" class="form-input" placeholder="Phone Number">
+                <input type="text" id="location" class="form-input" placeholder="City, State">
+                <input type="url" id="linkedin" class="form-input" placeholder="LinkedIn URL (optional)">
+                <input type="url" id="website" class="form-input" placeholder="Portfolio/Website (optional)">
+            </div>
+
+            <div class="form-section">
+                <h3>📝 Professional Summary</h3>
+                <textarea id="summary" class="form-textarea" rows="4" placeholder="Write a brief professional summary (2-3 sentences about your experience and goals)"></textarea>
+            </div>
+
+            <div class="form-section">
+                <h3>💼 Work Experience</h3>
+                <div id="experienceContainer"></div>
+                <button id="addExperience" class="btn-add">+ Add Experience</button>
+            </div>
+
+            <div class="form-section">
+                <h3>🎓 Education</h3>
+                <div id="educationContainer"></div>
+                <button id="addEducation" class="btn-add">+ Add Education</button>
+            </div>
+
+            <div class="form-section">
+                <h3>🛠️ Skills</h3>
+                <textarea id="skills" class="form-textarea" rows="3" placeholder="Enter your skills separated by commas (e.g., JavaScript, Project Management, Python)"></textarea>
+            </div>
+
+            <div class="form-section">
+                <h3>🏆 Certifications (Optional)</h3>
+                <textarea id="certifications" class="form-textarea" rows="3" placeholder="List your certifications, one per line"></textarea>
+            </div>
+        </div>
+
+        <!-- Right Panel - Preview -->
+        <div class="preview-panel">
+            <div class="preview-header">
+                <h3>Live Preview</h3>
+                <div class="preview-actions">
+                    <button id="zoomOut" class="btn-icon">-</button>
+                    <span id="zoomLevel">100%</span>
+                    <button id="zoomIn" class="btn-icon">+</button>
+                </div>
+            </div>
+            <div class="preview-container" id="previewContainer">
+                <div id="resumePreview" class="resume-preview modern-template">
+                    <!-- Preview will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="builder.js"></script>
+</body>
+</html>
