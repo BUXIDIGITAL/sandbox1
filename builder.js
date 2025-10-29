@@ -24,6 +24,18 @@ let zoomLevel = 100;
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Builder.js loaded!');
+    
+    // Clear any corrupted localStorage first
+    try {
+        const saved = localStorage.getItem('resumeData');
+        if (saved) {
+            JSON.parse(saved); // Test if it's valid JSON
+        }
+    } catch (e) {
+        console.warn('Clearing corrupted localStorage');
+        localStorage.removeItem('resumeData');
+    }
+    
     setupEventListeners();
     loadFromLocalStorage();
     
